@@ -67,15 +67,20 @@ a:after {
   SECTION WRAPS
 ---------------------------------------------------*/
 
-/* Header Wrap */
-.header {
-  background: #1CBCAD;
-  background: url(../images/header-bg-2.jpg) no-repeat center top;
+.background-image {
+
+  background-image: url(../images/header-bg-2.jpg) no-repeat center top;
+
   -webkit-filter: blur(5px);
   -moz-filter: blur(5px);
   -o-filter: blur(5px);
   -ms-filter: blur(5px);
   filter: blur(5px);
+}
+/* Header Wrap */
+.header {
+  background: #1CBCAD;
+  /*background: url(../images/header-bg-2.jpg) no-repeat center top;*/
   padding-top:80px;
   text-align:center;
   background-attachment: relative;
