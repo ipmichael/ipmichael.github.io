@@ -80,7 +80,7 @@ a:after {
 /* Header Wrap */
 .header {
   background: #1CBCAD;
-  /*background: url(../images/header-bg-2.jpg) no-repeat center top;*/
+  background: url(../images/header-bg-2.jpg) no-repeat center top;
   padding-top:80px;
   text-align:center;
   background-attachment: relative;
