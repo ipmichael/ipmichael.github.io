@@ -39,6 +39,26 @@ body {
   
 }
 
+.gamebox{
+
+  position: relative;
+  border-radius: 30px;
+  
+  margin: 0 10%;
+  height:98%;
+  width:80%;
+  background:#7183DB;
+}
+.canvas{
+
+  position: relative;
+  border-radius: 10px;
+  top: 70px;
+  width:80%;
+  margin: 0 10%;
+  background: #ffffff;
+}
+
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Raleway"; /* OPTIONAL: Google Fonts - title font */
