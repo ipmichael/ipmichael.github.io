@@ -9,56 +9,6 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-@keyframes blink{
-  50%{
-    color: rgba(255,255,255,0.8);
-  }
-}
-@-webkit-keyframes blink {
-   50%{
-      color: rgba(255,255,255,0.8);
-    }
-}
-@-moz-keyframes blink {
-  50%{
-      color: rgba(255,255,255,0.8);
-    }
-}
-.cursor{
-
-  animation: blink 1s infinite;
-    -webkit-animation: blink 1s infinite;
-    -moz-animation: blink 1s infinite;
-    position: relative;
-
-    color: #4E4E56;
-  font-size: 20px;
-  z-index: -1;
-  top: -27px;
-  left: 176px;
-  
-}
-
-.gamebox{
-
-  position: relative;
-  border-radius: 30px;
-  
-  margin: 0 10%;
-  height:98%;
-  width:80%;
-  background:#7183DB;
-}
-.canvas{
-
-  position: relative;
-  border-radius: 10px;
-  top: 70px;
-  width:80%;
-  margin: 0 10%;
-  background: #ffffff;
-}
-
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Raleway"; /* OPTIONAL: Google Fonts - title font */
