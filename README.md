@@ -1,1 +1,1 @@
-got most of the code for this from a tutorial someone posted on medium, haha
+an old, old personal website. an update is long overdue
