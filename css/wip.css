@@ -1,11 +1,26 @@
+html { 
+  background: url(../images/nature.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 body {
-  background-color: #f2f2f2;
-  font-weight: 300;
   font-size: 16px;
   font-family: "Raleway";
-  color: #555;
   text-align: center;
 
   -webkit-font-smoothing: antialiased;
   -webkit-overflow-scrolling: touch;
+}
+
+.about{
+	width: 60%;
+  margin: auto;
+  padding: 20px;
+  border: 3px solid #666;
+  /*background: #ffffff;*/
+  border-radius: 7px;
+  text-align: left;
 }
