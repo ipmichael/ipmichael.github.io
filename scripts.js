@@ -17,7 +17,6 @@ function getCookie(cname) {
 }
 
 function checkCookie() {
-	document.getElementById("lel").innerHTML ="meh";
     var user = getCookie("username");
     if (user != "") {
         document.getElementById("lel").innerHTML = "Hello, "+user;
@@ -27,5 +26,6 @@ function checkCookie() {
         if (user != "" && user != null) {
             setCookie("username", user, 365);
         }
+		document.getElementById("lel").innerHTML = "Hello, "+user;
     }
 }
