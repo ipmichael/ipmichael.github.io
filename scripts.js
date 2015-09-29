@@ -17,10 +17,10 @@ function getCookie(cname) {
 }
 
 function checkCookie() {
-	document.getElementByID("lel").innerHTML ="meh";
+	document.getElementById("lel").innerHTML ="meh";
     var user = getCookie("username");
     if (user != "") {
-        document.getElementByID("lel").innerHTML = "Hello, "+user;
+        document.getElementById("lel").innerHTML = "Hello, "+user;
     } else {
         user = prompt("What's your name?", "");
 
