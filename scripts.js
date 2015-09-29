@@ -1,22 +1,29 @@
-function displayVisits() 
- {    
-  // How many visits so far? 
-      var numVisits = GetCookie("numVisits"); 
-      if (numVisits) numVisits = parseInt(numVisits) + 1; 
-      else numVisits = 1; // the value for the new cookie 
-  
-  // Show the number of visits 
-      if (numVisits==1){
-      	document.write("<p>This is your first visit.</p>");
-      }  
-      else{
-      	document.write("<p>You have visited this page " + numVisits + " times.</p>"); 
-      } 
-  
-  // Set the cookie to expire 365 days from now 
-      var today = new Date(); 
-      today.setTime(today.getTime() + 365 /*days*/ * 24 /*hours*/ * 60 /*minutes*/ * 60 /*seconds*/ * 1000 /*milliseconds*/); 
-      SetCookie("numVisits", numVisits, today); 
-  }
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
 
-displayVisits();
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
+function checkCookie() {
+    var user = getCookie("username");
+    if (user != "") {
+        alert("Welcome again " + user);
+    } else {
+        user = prompt("Please enter your name:", "");
+        if (user != "" && user != null) {
+            setCookie("username", user, 365);
+        }
+    }
+}
