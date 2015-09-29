@@ -19,9 +19,10 @@ function getCookie(cname) {
 function checkCookie() {
     var user = getCookie("username");
     if (user != "") {
-        alert("Welcome again " + user);
+        document.getElementByID("about").innerHTML = "Hello, "+user;
     } else {
-        user = prompt("Please enter your name:", "");
+        user = prompt("What's your name?", "");
+
         if (user != "" && user != null) {
             setCookie("username", user, 365);
         }
