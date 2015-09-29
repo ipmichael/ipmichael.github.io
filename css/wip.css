@@ -1,9 +1,15 @@
 html { 
-  background: url(../images/nature.jpg) no-repeat center center fixed; 
+  /*background: url(../images/header-bg.jpg) no-repeat center center fixed; */
+  /*background: rgb(0,150,225);*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+.center{
+	top: 50%;
+	left: 50%;
 }
 
 body {
@@ -15,11 +21,13 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-.about{
+#about{
+
 	width: 60%;
   margin: auto;
+  margin-top: 8em;
   padding: 20px;
-  border: 3px solid #666;
+  border: 3px solid;
   /*background: #ffffff;*/
   border-radius: 7px;
   text-align: left;
