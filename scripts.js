@@ -16,6 +16,14 @@ function getCookie(cname) {
     return "";
 }
 
+function logCookie(){
+	console.log(document.cookie);
+}
+
+function addToCookie(key,value){
+	document.cookie = key + "=" + value + ";"+document.cookie;
+}
+
 function checkCookie() {
     var user = getCookie("username");
     if (user != "") {
