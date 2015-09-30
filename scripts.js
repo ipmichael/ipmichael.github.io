@@ -24,6 +24,8 @@ function addToCookie(key,value){
 	document.cookie = key + "=" + value + ";"+document.cookie;
 }
 
+
+
 function checkCookie() {
     var user = getCookie("username");
     if (user != "") {

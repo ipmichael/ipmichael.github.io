@@ -15,14 +15,13 @@ html {
 body {
   font-size: 16px;
   font-family: "Raleway";
-  text-align: center;
 
   -webkit-font-smoothing: antialiased;
   -webkit-overflow-scrolling: touch;
 }
 
 #about{
-
+	text-align: left;
 	width: 60%;
   margin: auto;
   margin-top: 8em;
