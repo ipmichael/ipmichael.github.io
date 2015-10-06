@@ -17,16 +17,22 @@ html {
 body {
   font-size: 16px;
   font-family: "Raleway";
-  background-color: rgba(170,75,50,0.7);
+  background-color: rgb(190,95,70);
   -webkit-font-smoothing: antialiased;
   -webkit-overflow-scrolling: touch;
 }
 
 h1{
   -webkit-margin-before: 0.67em;
-  -webkit-margin-after: 0.67em;
+  -webkit-margin-after: .67em;
   -webkit-margin-start: 0px;
-  -webkit-margin-end: 0px;
+  -webkit-margin-end: 10px;
+  font-weight: lighter;
+}
+
+#palettes{
+  margin-top: 2em;
+  padding-bottom: 10px;
 }
 
 .smSquare{
@@ -39,7 +45,7 @@ h1{
 }
 
 .pal1{
-  background: rgba(170,75,50,0.7);
+  background: rgb(170,75,50);
 }
 .pal2{
   background: rgb(0,255,170);
