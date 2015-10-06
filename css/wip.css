@@ -12,12 +12,37 @@ html {
 	left: 50%;
 }
 
+/*color scheme: wooden brown, various cerulean blues, white*/
+
 body {
   font-size: 16px;
   font-family: "Raleway";
-
+  background-color: rgba(170,75,50,0.7);
   -webkit-font-smoothing: antialiased;
   -webkit-overflow-scrolling: touch;
+}
+
+h1{
+  -webkit-margin-before: 0.67em;
+  -webkit-margin-after: 0.67em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
+
+.smSquare{
+  width: 70px;
+  height: 70px;
+}
+
+.fl{
+  float: left;
+}
+
+.pal1{
+  background: rgba(170,75,50,0.7);
+}
+.pal2{
+  background: rgb(0,255,170);
 }
 
 #about{
