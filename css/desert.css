@@ -79,6 +79,11 @@ Layout styles
 	margin: 0 auto;
 }
 
+.terminal
+{
+	font-family: 'Inconsolata',;
+}
+
 .header
 {
 	color: #fff;
