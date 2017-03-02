@@ -9,12 +9,38 @@ $(document).ready(function(){
         }
     });
     function processInput(command){
+        // var d1 = new $.Deferred();
         printToLog(">"+ command);
         $("#mainIn").val("");
         checkCommands(command);
-                
     }
 });
+
+// function writeText(content, callback) {
+//     var contentArray = content.split("");
+//     var current = 0;
+//     // this.append("<br/>");
+//     setInterval(function() {
+//         if(current < contentArray.length) {
+//             // elem.text(elem.text() + contentArray[current++]);
+//             this.append(contentArray[current++] + current);
+//         }
+//     }, 100);
+// }
+
+// (function($) {
+//     $.fn.writeText = function(content) {
+//         var contentArray = content.split(""),
+//             current = 0,
+//             elem = this;
+//         setInterval(function() {
+//             if(current < contentArray.length) {
+//                 this.append(contentArray[current++] + current);
+//             }
+//         }, 100);
+//     };
+    
+// })(jQuery);
 
 function hasOwnProperty(obj, prop) {
     var proto = obj.__proto__ || obj.constructor.prototype;
@@ -29,48 +55,13 @@ if ( Object.prototype.hasOwnProperty ) {
 }
 
 function version(){
-    return "1.01"
-}
-
-function checkCommands(command){
-    if(command.search(/say .+/i)!= -1){
-        var regex = /say (.+)/i;
-        var match = regex.exec(command);
-        printToLog("You say \""+match[1]+"\".");
-        return true;
-    }else if(command.search(/commands/i)!= -1){
-        printCommandList();
-        return true;
-    }else if(command.search(/look at .+/i)!= -1){
-        var regex = /look at (.+)/i;
-        var match = regex.exec(command);
-        aliasMap.forEach(function(obj, alias){
-            if(match[1].toUpperCase() == alias.toUpperCase()){
-                if(hasOwnProperty(obj,'desc')){
-                    printToLog(obj.desc);
-                    return true;
-                }
-            }
-        });
-    }else if(command.search(/look around/i)!= -1){
-        var regex = /look around/i;
-        if(hasOwnProperty(player.location,'desc')){
-            printToLog(player.location.desc);
-            var allRes = '';
-            player.location.residents.forEach(function(res){
-                printToLog(res.desc);
-            });
-            return true;
-        }
-    }else{
-        printToLog("almost got it")
-    }
-
-    return false;
+    return "1.02"
 }
 
 function printToLog(text){
-    $('#log').append("<br/>"+ text);
+    $('#log').append("<br/>" + text);
+    // $('#log').writeText(text);
+    // _callback();
 }
 
 function printCommandList(){

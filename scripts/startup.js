@@ -34,3 +34,40 @@ aliasMap.set('big hut',hut2);
 aliasMap.set('the big hut',hut2);
 aliasMap.set('bigger hut',hut2);
 aliasMap.set('the bigger hut',hut2);
+
+function checkCommands(command){
+    if(command.search(/say .+/i)!= -1){
+        var regex = /say (.+)/i;
+        var match = regex.exec(command);
+        printToLog("You say \""+match[1]+"\".");
+        return true;
+    }else if(command.search(/commands/i)!= -1){
+        printCommandList();
+        return true;
+    }else if(command.search(/look at .+/i)!= -1){
+        var regex = /look at (.+)/i;
+        var match = regex.exec(command);
+        aliasMap.forEach(function(obj, alias){
+            if(match[1].toUpperCase() == alias.toUpperCase()){
+                if(hasOwnProperty(obj,'desc')){
+                    printToLog(obj.desc);
+                    return true;
+                }
+            }
+        });
+    }else if(command.search(/look around/i)!= -1){
+        var regex = /look around/i;
+        if(hasOwnProperty(player.location,'desc')){
+            printToLog(player.location.desc);
+            var allRes = '';
+            player.location.residents.forEach(function(res){
+                printToLog(res.desc);
+            });
+            return true;
+        }
+    }else{
+        printToLog("almost got it")
+    }
+
+    return false;
+}
