@@ -1,51 +1,111 @@
 * {
-    overflow: auto;
+	overflow: auto;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
 
+.spill{
+	overflow: visible;
+}
+
 input{
-    border: none;
-    /*border-bottom: 1px solid black;*/
+	border: none;
+	/*border-bottom: 1px solid black;*/
 }
 
 #title{
-    margin: 0 auto;
+	margin: 0 auto;
+	font-size: 125%;
 }
 
 .container{
-    position: relative;
+	position: relative;
 }
 
 #gameBox{
-    margin-top: 15%;
-    margin-left: 15%;
-    margin-right: 15%;
-    height: 400px;
+	margin-top: 5%;
+	margin-left: auto;
+	margin-right: auto;
+/*	margin-left: 15%;
+	margin-right: 15%;
+*/	/*height: 400px;*/
+	max-height: 50%;
+	width: 80%;
 }
 
+#gameBox:hover{
+	cursor: default;
+}
+
+.unselectable {
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none; 
+ }
+
 .border{
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 3px;
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 3px;
 }
 
 #logBox{
-    margin: 0 auto;
-    max-width: 70%;
-    /*max-height: 90%;*/
-    height: 250px;
+	margin: 0 auto;
+	max-width: 75%;
+	max-height: 90%;
+	height: 350px;
+	/*height: 80%;*/
 }
 
 #mainInDiv{
-    position: static;
-    max-width: 70%;
-    margin: 0 auto;
-    margin-bottom: 8%;
-    margin-top: 1px;
+	position: static;
+	max-width: 70%;
+	margin-left: 25%;
+	/*margin-bottom: 5%;*/
+	margin-top: 1%;
+}
+
+#stat-box{
+	position: static;
+	/*max-width: 70%;*/
+	/*margin: 0 auto;*/
+	float: left;
+	width: 20%;
+	/*text-align: center;*/
+	/*margin-bottom: 5%;*/
+	margin-top: 3%;
+	margin-bottom: 3%;
+}
+
+button{
+		position: static;
+	margin-top: 2px;
+	margin-left: auto;
+	margin-right: auto;
+
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.first{
+	margin-left: 25%;
+}
+
+.second{
+	margin-left: 25%;
+}
+
+.search{
+	width: 98%;
 }
 
 .keepdown{
 
+}
+
+.glow{
+-moz-box-shadow: 0px 0px 10px Green;
+-webkit-box-shadow: 0px 0px 10px Green;
+box-shadow: 0px 0px 10px Green;
 }
