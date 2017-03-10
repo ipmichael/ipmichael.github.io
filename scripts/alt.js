@@ -243,7 +243,7 @@ $(document).ready(function(){
         var dmg = 2*player.stats.get("Strength");
         printToLog(">punch");
 
-        if(player.stats.get("Stamina") - )
+        // if(player.stats.get("Stamina") - )
         if(hit(player.stats.get("Accuracy"),currentEnemy.stats.get("dodge"))){
             printToLog("Enemy takes "+dmg+" damage.");
             currentEnemy.health -= dmg;
