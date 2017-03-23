@@ -92,6 +92,10 @@ button{
 
 	padding-top: 4px;
 	padding-bottom: 4px;
+	
+   word-wrap: break-word !important;
+   white-space: normal !important;
+
 }
 
 .first{
