@@ -50,6 +50,22 @@ input{
 	padding: 3px;
 }
 
+.my-button{
+	border: 1px solid #DCDCDC;
+	border-radius: 5px;
+	padding: 3px 3px 5px 5px;
+	display: inline-block;
+}
+.my-button:hover{
+	background:  #e5e6eb;
+}
+.my-button:active{
+	background: #d2d4dc;
+}
+.my-button:disabled{
+	background: #898989;
+}
+
 #logBox{
 	margin: 0 auto;
 	max-width: 75%;
@@ -84,7 +100,7 @@ input{
 	width:20%;
 }
 
-button{
+/*button{
 		position: static;
 	margin-top: 2px;
 	margin-left: auto;
@@ -92,27 +108,7 @@ button{
 
 	padding-top: 4px;
 	padding-bottom: 4px;
-	
-   word-wrap: break-word !important;
-   white-space: normal !important;
-
-}
-
-.first{
-	margin-left: 25%;
-}
-
-.second{
-	margin-left: 25%;
-}
-
-.search{
-	width: 98%;
-}
-
-.keepdown{
-
-}
+}*/
 
 .glow{
 -moz-box-shadow: 0px 0px 10px Green;
