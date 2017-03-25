@@ -16,6 +16,7 @@ var allSituations = ["peace"];
 function Advisor(type,name){
 	this.type = type;
 	this.name = name;
+	this.favor = 0;
 }
 
 function initGame(){
@@ -34,6 +35,8 @@ $(document).ready(function(){
 	$(".my-button").hide();
 	$(".opt0").show();
 	$(".my-button").click(function(){
+
+		game.turn++;
 		$(".my-button").attr("disabled",true);
 		setTimeout(function(){
 			$(".my-button").removeAttr("disabled")
@@ -42,7 +45,7 @@ $(document).ready(function(){
 
 	$(".opt0").click(function(){
 		if(game.turn == 1){
-			$("#log")("Are you ready?");
+			$("#log").text("Are you ready?");
 			$(".opt0").text("I'm ready!");
 		}
 
@@ -52,7 +55,7 @@ $(document).ready(function(){
 
 			initGame();
 			game.sit = "peace";
-			update();
+			update(0);
 		}
 
 		$("#logBox").prop({ scrollTop: $("#logBox").prop("scrollHeight") });
@@ -60,29 +63,38 @@ $(document).ready(function(){
 	})
 
 	$(".opt1").click(function(){
-		game.turn++;
+		if(game.turn % advisors.length == (advisors.length - 1)){
+			//full rotation
+			var randSitNum = Math.floor(Math.random()*allSituations.length);
+			game.sit = allSituations[randSitNum];
+		}
 		$("#logBox").prop({ scrollTop: $("#logBox").prop("scrollHeight") });
 	})
 
 	$("#yes").click(function(){
 		game.yesFn();
+		update(1);
 	})
 	$("#no").click(function(){
 		game.noFn();
+		update(-1);
 	})
 
 });
 
 //update things
-function update(){
+function update(favor){
+	var prevIndex = (game.turn - 1) % advisors.length;
+	var prevAdv = advisors[prevIndex];
+	prevAdv.favor += favor;
 	var index = game.turn % advisors.length;
 	var currentAdv = advisors[index];
 	$("#log").text(currentAdv.name + " the " + currentAdv.type + " Advisor");
 	$("#a-text").text(currentAdv.sitMap.get(game.sit).speak);//TODO
 	$("#yes").text(currentAdv.sitMap.get(game.sit).yes);
 	$("#no").text(currentAdv.sitMap.get(game.sit).no);
-	game.yesFn = currentAdv.sitMap.get(game.sit).yesFn();
-	game.noFn = currentAdv.sitMap.get(game.sit).noFn();
+	game.yesFn = currentAdv.sitMap.get(game.sit)["yesFn"];
+	game.noFn = currentAdv.sitMap.get(game.sit)["noFn"];
 }
 
 function playerAlive(){

@@ -37,7 +37,7 @@ function culturalSitMap(){
 		yes: "Go for it.",
 		no: "Ain't nobody got time for that",
 		yesFn: function(){
-
+			
 		},
 		noFn: function(){
 			
@@ -61,8 +61,4 @@ function scienceSitMap(){
 	})
 
 	return sm;
-}
-
-var militFunctions = {
-
 }
