@@ -9,7 +9,7 @@ var player = {};
 var advisorTypes = ["Military","Economic","Cultural","Science"];
 var advisors = [];
 
-var allSituations = ["peace"];
+var allSituations = ["peace", "peace2"];
 
 //sitMap is map of keywords for situations (i.e. flood, war) to array of objects what the advisor would say
 //"flood" -> [{text:"Oh no, the flood wiped out the barn! Can I rebuild it?" yes:"yes, need barnz" no:"no, don't have moneyz", fnYes, fnNo},{},{}]
