@@ -20,14 +20,14 @@ var curSitObjs = [];
 var statMap = new Map();
 statMap.set("Age", 21);
 statMap.set("Health", 100);
-statMap.set("Population", 100);
+statMap.set("Population", 10);
 statMap.set("Morale",50);
 statMap.set("Gold", 0);
 statMap.set("Army", 0);
 
 var infMap = new Map();
 infMap.set("Castles", 1);
-infMap.set("Huts", 10);
+infMap.set("Huts", 5);
 infMap.set("Land", 50);
 infMap.set("Barracks", 0);
 
@@ -230,7 +230,7 @@ function initGame(){
 function oneYear(){
 	modStat("Age",1,false);
 	modStat("Population",infMap.get("Huts"),false);
-	modStat("Gold",infMap.get("Land"),false);
+	modStat("Gold",infMap.get("Land")-statMap.get("Population"),false);
 }
 
 $(document).ready(function(){
@@ -251,7 +251,7 @@ $(document).ready(function(){
 
 	$(".opt0").click(function(){
 		if(game.turn == 1){
-			$("#log").text("Are you ready?");
+			$("#log").text("Each decision you make progresses the game by one year and will have various effects on your kingdom. Are you ready?");
 			$(".opt0").text("I'm ready!");
 		}
 
@@ -346,9 +346,17 @@ function update(favor){
 }
 
 function playerAlive(){
-	if(player.health > 0){
-		return true;
+	if(player.health <= 0){
+		$("#log").html("<b>GAME OVER</b>");
+		$("#a-text").text("You died of crippling injuries");
+		return false;
 	}
 
-	return false;
+	if(statMap.get("Population") <= 0 && statMap.get("Army") <= 0){
+		$("#log").html("<b>GAME OVER</b>");
+		$("#a-text").text("Your population was wiped out and a neighboring kingdom promptly beheads you.");
+		return false;
+	}
+
+	return true;
 }
