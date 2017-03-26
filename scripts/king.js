@@ -41,6 +41,8 @@ function printToInf(value, key, map){
 }
 
 function printToStats(value, key, map){
+
+	
     if(key == "Health"){
     	var desc = "";
     	if(value > 100){
