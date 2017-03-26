@@ -20,7 +20,7 @@ function militarySitMap(){
 		yes: "Go for it.",
 		no: "Nah",
 		yesFn: function(){
-			advisors[1].favor--;
+			advisors[1].favor-=3;
 		},
 		noFn: function(){
 

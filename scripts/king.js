@@ -123,7 +123,12 @@ function printToStats(value, key, map){
 }
 
 //pass in name of stat and value to add, or multiplier if mult is true
-function modStat(stat, val, mult){
+function modStat(stat, val, mult, yearly){
+
+	var yearlyText = "";
+	if(yearly){
+		yearlyText = "<i>(annual) </i>";
+	}
 
 	var orig = statMap.get(stat);
 
@@ -149,7 +154,7 @@ function modStat(stat, val, mult){
 		sign = "+";
 	}
 	if(diff != 0){
-		$("#c-text").append("<br/>"+ stat+ " "+sign+" "+diff);
+		$("#c-text").append("<br/>"+yearlyText + stat+ " "+sign+" "+diff);
 	}
 	
 }
@@ -231,9 +236,9 @@ function initGame(){
 }
 
 function oneYear(){
-	modStat("Age",1,false);
-	modStat("Population",infMap.get("Huts"),false);
-	modStat("Gold",infMap.get("Land")-statMap.get("Population"),false);
+	modStat("Age",1,false,true);
+	modStat("Population",infMap.get("Huts"),false,true);
+	modStat("Gold",infMap.get("Land")-statMap.get("Population"),false,true);
 }
 
 $(document).ready(function(){
@@ -301,20 +306,22 @@ $(document).ready(function(){
 	})
 
 	$("#yes").click(function(){
+		advisorMap.get(game.sit.type).favor++;
 		game.yesFn();
-		update(1);
+		update();
 		updateStats();
 	})
 	$("#no").click(function(){
+		advisorMap.get(game.sit.type).favor--;
 		game.noFn();
-		update(-1);
+		update();
 		updateStats();
 	})
 
 });
 
 //update things
-function update(favor){
+function update(){
 
 	//when I used game.sit = "peace"
 	// var prevIndex = (game.turn - 1) % advisors.length;
@@ -333,7 +340,9 @@ function update(favor){
 	var advType = game.sit.type;
 	var advName = advisorMap.get(advType).name;
 
-	advisorMap.get(advType).favor += favor;
+	var favor = advisorMap.get(advType).favor;
+
+
 
 	$("#log").html("<b>"+ advName + " the " + advType + " Advisor</b>");
 
