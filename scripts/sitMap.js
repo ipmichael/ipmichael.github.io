@@ -85,8 +85,8 @@ function economicSitMap(){
 			var army = statMap.get("Army");
 
 			var popToConv = Math.floor(statMap.get("Population")/5);
-			modStat("Population", -1*numToConv, false);
-			modInf("Huts", Math.floor(numToConv/5), false);
+			modStat("Population", -1*popToConv, false);
+			modInf("Huts", Math.floor(popToConv/5), false);
 			var goldToConv = Math.floor(statMap.get("Gold")/10);
 			modStat("Gold", -1*goldToConv, false);
 			modInf("Land", Math.floor(goldToConv/10), false);
