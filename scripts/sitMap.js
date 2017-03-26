@@ -92,9 +92,13 @@ function economicSitMap(){
 			var army = statMap.get("Army");
 
 			var popToConv = Math.floor(statMap.get("Population")/5);
-			modStat("Population", -1*popToConv, false);
-			modInf("Huts", Math.floor(popToConv/5), false);
-
+			if(popToConv < 25){
+				italMsg("you need at least 25 population");
+			}else{
+				modStat("Population", -1*popToConv, false);
+				modInf("Huts", Math.floor(popToConv/5), false);
+			}
+			
 			var goldToConv = Math.floor(statMap.get("Gold")/10);
 			if(goldToConv < 50){
 				italMsg("you needed at least 50 gold");
