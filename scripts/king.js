@@ -16,14 +16,28 @@ var statMap = new Map();
 statMap.set("Age", 21);
 statMap.set("Health", 100);
 statMap.set("Population", 100);
-statMap.set("People's Happiness",50);
+statMap.set("Morale",50);
 statMap.set("Gold", 0);
 statMap.set("Army", 0);
 
-function updateStats(){
+var infMap = new Map();
+infMap.set("Castles", 1);
+infMap.set("Huts", 10);
+infMap.set("Barracks", 0);
 
+function updateStats(){
+	$("#inf-box").html("<b>Infrastructure</b>");
+    infMap.forEach(printToInf);
     $("#stat-box").html("<b>Stats</b>");
     statMap.forEach(printToStats);
+}
+
+function printToInf(value, key, map){
+	if(value == 0){
+
+    }else{
+        $('#inf-box').append("<br/>"+key+": "+value);
+    }   
 }
 
 function printToStats(value, key, map){
@@ -39,7 +53,7 @@ function printToStats(value, key, map){
     		desc = "Dying";
     	}
         $('#stat-box').append("<br/>"+key+": "+desc);
-    }else if(key == "People's Happiness"){
+    }else if(key == "Morale"){
     	var desc = "";
     	if(value > 70){
     		desc = "Euphoric";
@@ -47,12 +61,12 @@ function printToStats(value, key, map){
     		desc = "Happy";
     	}else if(value >= 50){
     		desc = "Content";
-    	}else if(value > 40{
+    	}else if(value > 40){
     		desc = "Grumbling";
     	}else if(value > 30){
     		desc = "Disgusted"
     	}else{
-    		desc = ""
+    		desc = "Rioting"
     	}
         $('#stat-box').append("<br/>"+key+": "+desc);
     }else{
@@ -139,6 +153,9 @@ $(document).ready(function(){
 			curSituations.splice(i,1);
 		}
 		$("#logBox").prop({ scrollTop: $("#logBox").prop("scrollHeight") });
+		if(!playerAlive()){
+			//game over
+		}
 		updateStats();
 	})
 
@@ -160,7 +177,7 @@ function update(favor){
 	prevAdv.favor += favor;
 	var index = game.turn % advisors.length;
 	var currentAdv = advisors[index];
-	$("#log").text(currentAdv.name + " the " + currentAdv.type + " Advisor");
+	$("#log").html("<b>"+currentAdv.name + " the " + currentAdv.type + " Advisor</b>");
 	$("#a-text").text(currentAdv.sitMap.get(game.sit).speak);//TODO
 	$("#yes").text(currentAdv.sitMap.get(game.sit).yes);
 	$("#no").text(currentAdv.sitMap.get(game.sit).no);
