@@ -9,8 +9,13 @@ var player = {};
 var advisorTypes = ["Military","Economic","Cultural","Science"];
 var advisors = [];
 
-var allSituations = ["peace", "peace2", "war0"];
-var curSituations = [];
+//all situation labels
+var allSitLabels = ["peace", "peace2", "war0"];
+var curSitLabels = [];
+
+//situation objects (total = numLabels * numAdvisors)
+var allSitObjs = [];
+var curSitObjs = [];
 
 var statMap = new Map();
 statMap.set("Age", 21);
@@ -190,6 +195,8 @@ function Advisor(type,name){
 	this.favor = 0;
 }
 
+var advisorMap = new Map();
+
 function initGame(){
 	player.health = 100;
 	for(i=0;i<advisorTypes.length; i++){
@@ -200,6 +207,23 @@ function initGame(){
 	advisors[1].sitMap = economicSitMap();
 	advisors[2].sitMap = culturalSitMap();
 	advisors[3].sitMap = scienceSitMap();
+
+	advisorMap.set("Military",advisors[0]);
+	advisorMap.set("Economic",advisors[1]);
+	advisorMap.set("Cultural",advisors[2]);
+	advisorMap.set("Science",advisors[3]);
+
+	//jumbling all situations together
+	for(i = 0;i<advisors.length; i++){
+		for(j = 0; j<allSitLabels.length; j++){
+			allSitObjs.push(advisors[i].sitMap.get(allSitLabels[j]));
+		}
+	}
+
+	curSitObjs = allSitObjs.slice();
+	game.sit = curSitObjs[0];
+	curSitObjs.splice(0,1);
+
 	updateStats();
 }
 
@@ -236,7 +260,7 @@ $(document).ready(function(){
 			$(".opt1").show();
 
 			initGame();
-			game.sit = "peace";
+			//game.sit = "peace";
 			update(0);
 		}
 
@@ -246,20 +270,28 @@ $(document).ready(function(){
 
 	$(".opt1").click(function(){
 		$("#c-text").text("");
+		//every click, one year passes
 		oneYear();
 		updateStats();
-		if(curSituations.length == 0){
-			curSituations = allSituations.slice();
+		if(curSitObjs.length == 0){
+			//reset array of situations to go through
+			curSitObjs = allSitObjs.slice();
 		}
-		if((game.turn-2) % advisors.length == 0){
-			//full rotation
-			var randSitNum = Math.floor(Math.random()*curSituations.length);
-			game.sit = curSituations[randSitNum];
-			// modStat("Age",1,false);
-		}else if((game.turn - 2) % advisors.length == 1 ){
-			var i = curSituations.indexOf(game.sit);
-			curSituations.splice(i,1);
-		}
+
+		//before, when I would only change game.sit whenever all advisors had gone
+		// if((game.turn-2) % advisors.length == 0){
+		// 	//get random situatoin
+		// 	var randSitNum = Math.floor(Math.random()*curSitObjs.length);
+		// 	game.sit = curSitObjs[randSitNum];
+		// }else if((game.turn - 2) % advisors.length == 1 ){
+		// 	var i = curSitObjs.indexOf(game.sit);
+		// 	curSitObjs.splice(i,1);
+		// }
+
+		var randSitNum = Math.floor(Math.random()*curSitObjs.length);
+		game.sit = curSitObjs[randSitNum];
+		curSitObjs.splice(randSitNum,1);
+
 		$("#logBox").prop({ scrollTop: $("#logBox").prop("scrollHeight") });
 		if(!playerAlive()){
 			//game over
@@ -282,17 +314,35 @@ $(document).ready(function(){
 
 //update things
 function update(favor){
-	var prevIndex = (game.turn - 1) % advisors.length;
-	var prevAdv = advisors[prevIndex];
-	prevAdv.favor += favor;
-	var index = game.turn % advisors.length;
-	var currentAdv = advisors[index];
-	$("#log").html("<b>"+currentAdv.name + " the " + currentAdv.type + " Advisor</b>");
-	$("#a-text").text("\""+currentAdv.sitMap.get(game.sit).speak+"\"");//TODO
-	$("#yes").text(currentAdv.sitMap.get(game.sit).yes);
-	$("#no").text(currentAdv.sitMap.get(game.sit).no);
-	game.yesFn = currentAdv.sitMap.get(game.sit)["yesFn"];
-	game.noFn = currentAdv.sitMap.get(game.sit)["noFn"];
+
+	//when I used game.sit = "peace"
+	// var prevIndex = (game.turn - 1) % advisors.length;
+	// var prevAdv = advisors[prevIndex];
+	// prevAdv.favor += favor;
+	// var index = game.turn % advisors.length;
+	// var currentAdv = advisors[index];
+	// $("#log").html("<b>"+currentAdv.name + " the " + currentAdv.type + " Advisor</b>");
+
+	// $("#a-text").text("\""+currentAdv.sitMap.get(game.sit).speak+"\"");//TODO
+	// $("#yes").text(currentAdv.sitMap.get(game.sit).yes);
+	// $("#no").text(currentAdv.sitMap.get(game.sit).no);
+	// game.yesFn = currentAdv.sitMap.get(game.sit)["yesFn"];
+	// game.noFn = currentAdv.sitMap.get(game.sit)["noFn"];
+
+	var advType = game.sit.type;
+	var advName = advisorMap.get(advType).name;
+
+	advisorMap.get(advType).favor += favor;
+
+	$("#log").html("<b>"+ advName + " the " + advType + " Advisor</b>");
+
+
+	//now game.sit is the object
+	$("#a-text").text("\""+game.sit.speak+"\"");//TODO
+	$("#yes").text(game.sit.yes);
+	$("#no").text(game.sit.no);
+	game.yesFn = game.sit["yesFn"];
+	game.noFn = game.sit["noFn"];
 }
 
 function playerAlive(){
