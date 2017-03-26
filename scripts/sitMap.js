@@ -91,20 +91,20 @@ function economicSitMap(){
 		yesFn: function(){
 			var army = statMap.get("Army");
 
-			var popToConv = Math.floor(statMap.get("Population")/5);
-			if(popToConv < 25){
+			var pop = Math.floor(statMap.get("Population"));
+			if(pop < 25){
 				italMsg("you need at least 25 population");
 			}else{
-				modStat("Population", -1*popToConv, false);
-				modInf("Huts", Math.floor(popToConv/5), false);
+				modStat("Population", Math.floor(-1*pop/5), false);
+				modInf("Huts", Math.floor(pop/25), false);
 			}
 			
-			var goldToConv = Math.floor(statMap.get("Gold")/10);
-			if(goldToConv < 50){
+			var gold = Math.floor(statMap.get("Gold"));
+			if(gold < 50){
 				italMsg("you needed at least 50 gold");
 			}else{
-				modStat("Gold", -1*goldToConv, false);
-				modInf("Land", Math.floor(goldToConv/5), false);
+				modStat("Gold", Math.floor(-1*gold/10), false);
+				modInf("Land", Math.floor(gold/50), false);
 			}
 			
 		},
