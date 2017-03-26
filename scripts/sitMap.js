@@ -10,13 +10,13 @@ function militarySitMap(){
 		noFn: function(){
 
 		}
-	})
+	});
 	sm.set("peace2",{
-		speak: advisors[1].name + " is getting greedy. How about I smack him around a bit?",
+		speak: "I think " + advisors[1].name + " is taking some money from the treasury. How about I smack 'em around a bit?",
 		yes: "Go for it.",
 		no: "Nah",
 		yesFn: function(){
-
+			advisors[1].favor--;
 		},
 		noFn: function(){
 
@@ -28,7 +28,7 @@ function militarySitMap(){
 function economicSitMap(){
 	var sm = new Map();
 	sm.set("peace",{
-		speak: "Let's trade with Algonquia. We can give them a few slaves.",
+		speak: "I just got an interesting business deal from my friend in Algonquia. It involves... labor as an export.",
 		yes: "Go for it.",
 		no: "Uh we are not doing slavery",
 		yesFn: function(){
@@ -67,7 +67,7 @@ function culturalSitMap(){
 	});
 	sm.set("peace2",{
 		speak: advisors[0].name + " is too aggressive. I can't plan parties with all this ruccus.",
-		yes: "I'll handle it",
+		yes: "I'll take care of it",
 		no: "But I need my armies",
 		yesFn: function(){
 
@@ -93,7 +93,7 @@ function scienceSitMap(){
 		}
 	});
 	sm.set("peace2",{
-		speak: "I've got a great weapon developing, just need for funding.",
+		speak: advisors[0].name + " could really benefit from this weapon I'm developing, just need some funding.",
 		yes: "Go for it.",
 		no: "Nah",
 		yesFn: function(){
