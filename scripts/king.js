@@ -349,12 +349,14 @@ function playerAlive(){
 	if(player.health <= 0){
 		$("#log").html("<b>GAME OVER</b>");
 		$("#a-text").text("You died of crippling injuries");
+		$(".my-button").hide();
 		return false;
 	}
 
 	if(statMap.get("Population") <= 0 && statMap.get("Army") <= 0){
 		$("#log").html("<b>GAME OVER</b>");
 		$("#a-text").text("Your population was wiped out and a neighboring kingdom promptly beheads you.");
+		$(".my-button").hide();
 		return false;
 	}
 
