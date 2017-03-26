@@ -79,16 +79,17 @@ function economicSitMap(){
 	});
 	sm.set("war0",{
 		speak: "We should build some more huts and fertilize more land. It may cost a bit and the construction may be deadly, but we'll benefit in the long run.",
-		yes: "Love it",
-		no: "Let's wait",
+		yes: "Infrastructure ftw",
+		no: "Can't afford it right now",
 		yesFn: function(){
 			var army = statMap.get("Army");
+
 			var popToConv = Math.floor(statMap.get("Population")/5);
 			modStat("Population", -1*numToConv, false);
-			modStat("Huts", Math.floor(numToConv/5), false);
+			modInf("Huts", Math.floor(numToConv/5), false);
 			var goldToConv = Math.floor(statMap.get("Gold")/10);
-			modStat("Population", -1*goldToConv, false);
-			modStat("Huts", Math.floor(goldToConv/10), false);
+			modStat("Gold", -1*goldToConv, false);
+			modInf("Land", Math.floor(goldToConv/10), false);
 		},
 		noFn: function(){
 
