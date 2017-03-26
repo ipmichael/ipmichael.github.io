@@ -33,10 +33,11 @@ function militarySitMap(){
 		no: "It's cool",
 		yesFn: function(){
 			var army = statMap.get("Army");
-			if(army > 100){
+			if(army > 25){
 				$("#c-text").append("<br/><i>you succeeded!</i>");
 				modStat("Gold", 150, false);
 				modStat("Morale", 5, false);
+				modInf("Land",25, false);
 			}else{
 
 				$("#c-text").append("<br/><i>your army wasn't big enough</i>");
@@ -79,7 +80,7 @@ function economicSitMap(){
 		},
 		noFn: function(){
 			modStat("Morale", 5, false);
-			modStat("Gold", .9, true);
+			modStat("Gold", -1*infMap.get("Land"), false);
 		}
 	});
 	sm.set("war0",{
