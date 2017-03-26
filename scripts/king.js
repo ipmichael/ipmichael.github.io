@@ -32,6 +32,9 @@ infMap.set("Land", 50);
 infMap.set("Barracks", 0);
 
 function updateStats(){
+	if(!playerAlive()){
+		return;
+	}
 
 	var title = "";
 	var value = statMap.get("Gold");
@@ -293,9 +296,7 @@ $(document).ready(function(){
 		curSitObjs.splice(randSitNum,1);
 
 		$("#logBox").prop({ scrollTop: $("#logBox").prop("scrollHeight") });
-		if(!playerAlive()){
-			//game over
-		}
+		
 		updateStats();
 	})
 
