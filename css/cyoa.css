@@ -14,6 +14,11 @@ input{
 	/*border-bottom: 1px solid black;*/
 }
 
+.text{
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
 #title{
 	margin: 0 auto;
 	font-size: 125%;
